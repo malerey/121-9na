@@ -1,23 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect, useContext } from "react"
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import Populares from "./components/Populares"
+import Main from "./components/Main"
+import UltimosLanzamientos from "./components/UltimosLanzamientos"
+// funciones que nos permiten acceder a tres funconalidades: 
+// declarar variables
+// cambiar esas variables
+// generar un render del componente cuando esas variables cambien
+
+
+// primera regla: no se pueden llamar adentro de if, condicionales, for, switch, funciones. 
+// segunda regla: solo se pueden llamar en un componente o en otro hook 
+// tercera regla: su nombre debe comenzar con use 
+
+// custom hooks
+
+// una logica compartida por muchos componentes que requiere un estado 
+// NO INCLUYE HTML (jsx) --> eso se resuelve con componentes
 
 function App() {
+  // const [person, setPersona] = useState("")
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/populares" element={<Populares />} />
+            <Route path="/ultimas" element={<UltimosLanzamientos />} />
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 }
